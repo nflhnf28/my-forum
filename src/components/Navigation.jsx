@@ -1,5 +1,4 @@
-// import React from 'react';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 function Navigation({ signOut }) {
@@ -19,13 +18,8 @@ function Navigation({ signOut }) {
 	);
 }
 
-// const authUserShape = {
-// 	id: PropTypes.string.isRequired,
-// };
-
-// Navigation.propTypes = {
-// 	authUser: PropTypes.shape(authUserShape).isRequired,
-// 	signOut: PropTypes.func.isRequired,
-// };
+Navigation.propTypes = {
+	signOut: PropTypes.func.isRequired,
+};
 
 export default Navigation;

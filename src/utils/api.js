@@ -126,9 +126,9 @@ const api = (() => {
       throw new Error(message);
     }
 
-    const { data: { threadDetail } } = responseJson;
-
-    return threadDetail;
+    const { data: { detailThread } } = responseJson;
+    console.log(responseJson);
+    return detailThread;
   }
 
   async function createTalk({ text, replyTo = '' }) {
@@ -154,6 +154,29 @@ const api = (() => {
     const { data: { talk } } = responseJson;
 
     return talk;
+  }
+
+  async function createComment({ content, threadId }) {
+    const response = await _fetchWithAuth(`${BASE_URL}/threads/${threadId}/comments`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        content,
+      }),
+    });
+
+    const responseJson = await response.json();
+    const { status, message } = responseJson;
+
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: { comment } } = responseJson;
+
+    return comment;
   }
 
   async function toggleLikeTalk(id) {
@@ -185,6 +208,7 @@ const api = (() => {
     getAllUsers,
     getAllTalks,
     createTalk,
+    createComment,
     toggleLikeTalk,
     getThreadDetail,
   };

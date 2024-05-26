@@ -57,13 +57,13 @@ function App() {
 	return (
 		<>
 			<Loading />
+			<header>
+				<Navigation
+					authUser={authUser}
+					signOut={onSignOut}
+				/>
+			</header>
 			<div className='app-container'>
-				<header>
-					<Navigation
-						authUser={authUser}
-						signOut={onSignOut}
-					/>
-				</header>
 				<main>
 					<Routes>
 						<Route

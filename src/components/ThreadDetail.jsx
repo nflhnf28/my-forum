@@ -1,19 +1,18 @@
-// import React from 'react';
 // import PropTypes from 'prop-types';
-// import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { postedAt } from '../utils';
 
-function ThreadDetail({ body, createdAt, owner, /* likes, authUser, likeTalk,*/ }) {
-
+function ThreadDetail({ body, createdAt, category }) {
   return (
-    <section className="talk-detail">
-      <header>
-        <div className="talk-detail__user-info">
-          <p className="talk-detail__user-name">{owner}</p>
-        </div>
+    <section className="thread-detail">
+      <header className="thread-header">
+        <p className="thread-header__category">{category}</p>
       </header>
       <article>
-        <p className="talk-detail__text">{body}</p>
+        {/* <p className="talk-detail__text">{body}</p> */}
+        <p
+          className="talk-detail__text"
+          dangerouslySetInnerHTML={{ __html: body }}
+        />
       </article>
       <footer>
         <div className="talk-detail__like">
@@ -24,20 +23,11 @@ function ThreadDetail({ body, createdAt, owner, /* likes, authUser, likeTalk,*/ 
   );
 }
 
-// const userShape = {
+// ThreadDetail.propTypes = {
 //   id: PropTypes.string.isRequired,
-//   name: PropTypes.string.isRequired,
-//   photo: PropTypes.string.isRequired,
-// };
-
-// TalkDetail.propTypes = {
-//   id: PropTypes.string.isRequired,
-//   text: PropTypes.string.isRequired,
+//   body: PropTypes.string.isRequired,
 //   createdAt: PropTypes.string.isRequired,
-//   likes: PropTypes.arrayOf(PropTypes.string).isRequired,
-//   user: PropTypes.shape(userShape).isRequired,
-//   authUser: PropTypes.string.isRequired,
-//   likeTalk: PropTypes.func.isRequired,
+//   owner: PropTypes.string.isRequired,
 // };
 
 export default ThreadDetail;

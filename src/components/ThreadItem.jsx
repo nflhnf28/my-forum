@@ -1,23 +1,15 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { AiOutlineLike } from "react-icons/ai";
 import { AiOutlineDislike } from "react-icons/ai";
 import { AiOutlineComment } from "react-icons/ai";
 import { postedAt } from '../utils';
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 
 const ThreadItem = ({ id, title, body, category, upVotesBy, totalComments, createdAt, ownerId }) => {
-	// const navigate = useNavigate();
-	// const { owner.name } = owner;
-
-	// const onThreadClick = () => {
-	// 	navigate(`/threads/${id}`);
-	// };
-
 	return (
 		<div className='thread-item'>
 			<div className='thread-item__header'>
 				<span className="thread-item__category">{category}</span>
-				{/* <h3 className='thread-item__title' role='button' tabIndex={0} onClick={onThreadClick}>{title}</h3> */}
 				<h3 className='thread-item__title'>
 					<Link to={`/threads/${id}`}>{title}</Link>
 				</h3>
@@ -52,4 +44,17 @@ const ThreadItem = ({ id, title, body, category, upVotesBy, totalComments, creat
  *  dangerouslySetInnerHTML attribute untuk
  *  menyisipkan render HTML content langsung di React
  */
+
+ThreadItem.propTypes = {
+	id: PropTypes.string.isRequired,
+	title: PropTypes.string.isRequired,
+	body: PropTypes.string.isRequired,
+	category: PropTypes.string.isRequired,
+	upVotesBy: PropTypes.array.isRequired,
+	totalComments: PropTypes.number.isRequired,
+	ownerId: PropTypes.string.isRequired,
+	createdAt: PropTypes.string.isRequired,
+	owner: PropTypes.string,
+};
+
 export default ThreadItem;
