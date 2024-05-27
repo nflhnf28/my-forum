@@ -100,7 +100,6 @@ const api = (() => {
 
     return users;
   }
-
   async function getAllThreads() {
     const response = await fetch(`${BASE_URL}/threads`);
 

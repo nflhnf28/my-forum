@@ -1,4 +1,4 @@
-// import PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { postedAt } from '../utils';
 
 function ThreadDetail({ body, createdAt, category }) {
@@ -23,11 +23,10 @@ function ThreadDetail({ body, createdAt, category }) {
   );
 }
 
-// ThreadDetail.propTypes = {
-//   id: PropTypes.string.isRequired,
-//   body: PropTypes.string.isRequired,
-//   createdAt: PropTypes.string.isRequired,
-//   owner: PropTypes.string.isRequired,
-// };
+ThreadDetail.propTypes = {
+  body: PropTypes.string.isRequired,
+  createdAt: PropTypes.string.isRequired,
+  category: PropTypes.string.isRequired,
+};
 
 export default ThreadDetail;

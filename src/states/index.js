@@ -17,9 +17,9 @@ const store = configureStore({
 		isPreload: isPreloadReducer,
 		users: usersReducer,
 		threads: threadsReducer,
+		threadDetail: threadDetailReducer,
 		comments: commentsReducer,
 		leaderboards: leaderboardsReducer,
-		threadDetail: threadDetailReducer,
 		loadingBar: loadingBarReducer,
 	},
 });

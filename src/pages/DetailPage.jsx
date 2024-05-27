@@ -10,7 +10,11 @@ import { asyncAddComment } from '../states/comment/action';
 function DetailPage() {
 	const { id } = useParams();
 	const dispatch = useDispatch(); // @TODO: get dispatch function from store
-	const { threadDetail, authUser } = useSelector((states) => states); // @TODO: get talkDetail and authUser state from store
+	// const { threadDetail, authUser } = useSelector((states) => states); // @TODO: get talkDetail and authUser state from store
+	const { threadDetail, authUser } = useSelector((state) => ({
+		threadDetail: state.threadDetail,
+		authUser: state.authUser
+	}));
 
 	useEffect(() => {
 		// @TODO: dispatch async action to get thread detail by id

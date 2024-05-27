@@ -5,7 +5,7 @@ import { AiOutlineComment } from "react-icons/ai";
 import { postedAt } from '../utils';
 import PropTypes from 'prop-types';
 
-const ThreadItem = ({ id, title, body, category, upVotesBy = [], downVotesBy = [], totalComments = 0, createdAt, ownerId }) => {
+const ThreadItem = ({ id, title, body, category, upVotesBy = [], downVotesBy = [], totalComments = 0, createdAt, user }) => {
 	return (
 		<div className='thread-item'>
 			<div className='thread-item__header'>
@@ -33,7 +33,7 @@ const ThreadItem = ({ id, title, body, category, upVotesBy = [], downVotesBy = [
 				</button>
 				<span className="thread-item__total-comments"><AiOutlineComment />{totalComments}</span>
 				<p>{postedAt(createdAt)}</p>
-				<p className="thread-item__owner">Dibuat oleh <strong>{ownerId}</strong></p>
+				<p className="thread-item__owner">Dibuat oleh <strong>{user?.name}</strong></p>
 			</div>
 
 		</div>
@@ -53,9 +53,8 @@ ThreadItem.propTypes = {
 	upVotesBy: PropTypes.array,
 	downVotesBy: PropTypes.array,
 	totalComments: PropTypes.number,
-	ownerId: PropTypes.string.isRequired,
 	createdAt: PropTypes.string.isRequired,
-	owner: PropTypes.string,
+	user: PropTypes.object,
 };
 
 export default ThreadItem;
