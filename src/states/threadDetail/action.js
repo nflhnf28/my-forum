@@ -1,4 +1,4 @@
-import { hideLoading } from 'react-redux-loading-bar';
+import { hideLoading, showLoading } from 'react-redux-loading-bar';
 import api from '../../utils/api';
 
 const ActionType = {
@@ -33,7 +33,7 @@ function clearThreadDetailActionCreator() {
 
 function asyncReceiveThreadDetail(id) {
 	return async (dispatch) => {
-		// dispatch(showLoading());
+		dispatch(showLoading());
 		dispatch(clearThreadDetailActionCreator());
 
 		try {

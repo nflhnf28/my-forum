@@ -12,8 +12,6 @@ ReactDOM.createRoot(document.getElementById('root')).render(
 		<BrowserRouter>
 			<React.StrictMode>
 				<App />
-				{/* <Navigation /> */}
-				{/* <ThreadList /> */}
 			</React.StrictMode>
 		</BrowserRouter>
 	</Provider>

@@ -17,6 +17,8 @@ function DetailPage() {
 		dispatch(asyncReceiveThreadDetail(id));
 	}, [id, dispatch]);
 
+	// @TODO: add comment useEffect
+
 	const onAddComment = ({ content }) => {
 		// @TODO: dispatch async action to add talk
 		console.log({ content, threadId: id });

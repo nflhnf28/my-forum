@@ -1,35 +1,23 @@
+import { useEffect } from 'react';
 import ThreadList from '../components/ThreadList';
-// import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { asyncReceiveThreads } from '../states/threads/action';
+import { AiOutlinePlusCircle } from "react-icons/ai";
+import { Link } from 'react-router-dom';
 
 function HomePage() {
-	// const { /* talks = [], users = [],*/ authUser } = useSelector((states) => states); // @TODO: get talks, users, and authUser state from store
+	const threads = useSelector((states) => states?.threads)
+	const dispatch = useDispatch(); // @TODO: get dispatch function from store
 
-	// const dispatch = useDispatch(); // @TODO: get dispatch function from store
-
-	// useEffect(() => {
-	// 	// @TODO: dispatch async action to populate talks and users data
-	// 	dispatch(asyncPopulateUsersAndTalks());
-	// }, [dispatch]);
-
-	// const onAddTalk = (text) => {
-	// 	// @TODO: dispatch async action to add talk
-	// 	dispatch(asyncAddTalk({ text }));
-	// };
-
-	// const onLike = (id) => {
-	// 	// @TODO: dispatch async action to toggle like talk
-	// 	dispatch(asyncToogleLikeTalk(id));
-	// };
-
-	// const talkList = talks.map((talk) => ({
-	// 	...talk,
-	// 	user: users.find((user) => user.id === talk.user),
-	// 	authUser: authUser.id,
-	// }));
+	useEffect(() => {
+		// @TODO: dispatch async action to receive threads
+		dispatch(asyncReceiveThreads());
+	}, [dispatch]);
 
 	return (
 		<section className='home-page'>
-			<ThreadList />
+			<ThreadList threads={threads} />
+			<Link className="home-page__add-button" to="/new-thread"><AiOutlinePlusCircle /></Link>
 		</section>
 	);
 }

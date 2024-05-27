@@ -5,7 +5,7 @@ import { AiOutlineComment } from "react-icons/ai";
 import { postedAt } from '../utils';
 import PropTypes from 'prop-types';
 
-const ThreadItem = ({ id, title, body, category, upVotesBy, totalComments, createdAt, ownerId }) => {
+const ThreadItem = ({ id, title, body, category, upVotesBy = [], totalComments = 0, createdAt, ownerId }) => {
 	return (
 		<div className='thread-item'>
 			<div className='thread-item__header'>
@@ -25,11 +25,11 @@ const ThreadItem = ({ id, title, body, category, upVotesBy, totalComments, creat
 			<div className="thread-item__footer">
 				<button className="thread-upvote__button">
 					<AiOutlineLike />
-					<span className="thread-upvote__count">{upVotesBy.length}</span>
+					<span className="thread-upvote__count">{upVotesBy?.length}</span>
 				</button>
 				<button className="thread-downvote__button">
 					<AiOutlineDislike />
-					<span className="thread-downvote__count">{upVotesBy.length}</span>
+					<span className="thread-downvote__count">{upVotesBy?.length}</span>
 				</button>
 				<span className="thread-item__total-comments"><AiOutlineComment />{totalComments}</span>
 				<p>{postedAt(createdAt)}</p>
@@ -50,8 +50,8 @@ ThreadItem.propTypes = {
 	title: PropTypes.string.isRequired,
 	body: PropTypes.string.isRequired,
 	category: PropTypes.string.isRequired,
-	upVotesBy: PropTypes.array.isRequired,
-	totalComments: PropTypes.number.isRequired,
+	upVotesBy: PropTypes.array,
+	totalComments: PropTypes.number,
 	ownerId: PropTypes.string.isRequired,
 	createdAt: PropTypes.string.isRequired,
 	owner: PropTypes.string,
