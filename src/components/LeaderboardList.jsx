@@ -1,24 +1,16 @@
 import LeaderboardItem from "./LeaderboardItem";
-import { useState, useEffect } from 'react';
-import axios from 'axios';
+import { useEffect } from 'react';
+import { asyncReceiveLeaderboards } from "../states/leaderboards/action";
+import { useDispatch, useSelector } from "react-redux";
 
 function LeaderboardList() {
-  const [leaderboards, setLeaderboards] = useState([]);
+  const dispatch = useDispatch(); // @TODO: get dispatch function from store
+
+  const leaderboards = useSelector((state) => state.leaderboards); // Select leaderboards data from store
 
   useEffect(() => {
-    const fetchLeaderboards = async () => {
-      try {
-        const response = await axios.get(
-          'https://forum-api.dicoding.dev/v1/leaderboards'
-        );
-        setLeaderboards(response.data.data.leaderboards);
-      } catch (error) {
-        console.error('Error fetching leaderboards:', error);
-      }
-    };
-
-    fetchLeaderboards();
-  }, []);
+    dispatch(asyncReceiveLeaderboards()); // Dispatch async action to fetch leaderboards data
+  }, [dispatch]);
 
   return (
     <div className="leaderboards-list">

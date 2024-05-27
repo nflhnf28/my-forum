@@ -129,6 +129,18 @@ const api = (() => {
     return detailThread;
   }
 
+  async function getLeaderboards() {
+    const response = await fetch(`${BASE_URL}/leaderboards`);
+    const responseJson = await response.json();
+    const { status, message } = responseJson;
+    if (status !== 'success') {
+      throw new Error(message);
+    }
+
+    const { data: { leaderboards } } = responseJson;
+    return leaderboards;
+  }
+
   async function createThread({ title, body, category }) {
     const response = await _fetchWithAuth(`${BASE_URL}/threads`, {
       method: 'POST',
@@ -210,6 +222,7 @@ const api = (() => {
     createComment,
     toggleLikeTalk,
     getThreadDetail,
+    getLeaderboards,
   };
 })();
 

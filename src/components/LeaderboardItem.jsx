@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 
 function LeaderboardItem({ user, score }) {
   return (
@@ -6,6 +7,13 @@ function LeaderboardItem({ user, score }) {
       <p className="leaderboards-list__score">{score}</p>
     </div>
   );
+}
+
+LeaderboardItem.propTypes = {
+  user: PropTypes.shape({
+    name: PropTypes.string.isRequired,
+  }).isRequired,
+  score: PropTypes.number.isRequired,
 }
 
 export default LeaderboardItem;
