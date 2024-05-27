@@ -18,8 +18,8 @@ function asyncAddComment({ content, threadId }) {
   return async (dispatch) => {
     dispatch(showLoading());
     try {
-      const comment = await api.createComment({ content, threadId });
-      dispatch(addCommentActionCreator(comment));
+      await api.createComment({ content, threadId });
+      // dispatch(addCommentActionCreator());
     } catch (error) {
       alert(error.message);
     }

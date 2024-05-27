@@ -127,7 +127,6 @@ const api = (() => {
     }
 
     const { data: { detailThread } } = responseJson;
-    console.log(responseJson);
     return detailThread;
   }
 

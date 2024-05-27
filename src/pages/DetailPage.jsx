@@ -17,9 +17,10 @@ function DetailPage() {
 		dispatch(asyncReceiveThreadDetail(id));
 	}, [id, dispatch]);
 
-	const onAddComment = (commentar) => {
+	const onAddComment = ({ content }) => {
 		// @TODO: dispatch async action to add talk
-		dispatch(asyncAddComment({ commentar }, 'thread-91KocEqYPRz68MhD'));
+		console.log({ content, threadId: id });
+		dispatch(asyncAddComment({ content, threadId: id }));
 	};
 
 	if (!threadDetail) {
@@ -33,7 +34,7 @@ function DetailPage() {
 				{...threadDetail}
 			/>
 			<div className='thread-comment'>
-				<CommentInput addcomment={onAddComment} />
+				<CommentInput addComment={onAddComment} />
 				{
 					threadDetail.comments.map((comment, index) => (
 						<CommentItem key={index} comment={comment} />
