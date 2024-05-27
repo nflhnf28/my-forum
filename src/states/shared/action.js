@@ -8,9 +8,9 @@ function asyncGetUsersAndThreads() {
     try {
       dispatch(showLoading());
       const threads = await api.getAllThreads();
-      dispatch(receiveThreadsActionCreator(threads));
-
       const users = await api.getAllUsers();
+
+      dispatch(receiveThreadsActionCreator(threads));
       dispatch(receiveUsersActionCreator(users));
     } catch (error) {
       alert(error.message);
