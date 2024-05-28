@@ -16,7 +16,13 @@ function ThreadList({ threads }) {
 }
 
 ThreadList.propTypes = {
-	threads: PropTypes.array
-}
+	threads: PropTypes.arrayOf(
+		PropTypes.shape({
+			id: PropTypes.string.isRequired,
+			title: PropTypes.string.isRequired,
+			// Add other properties as needed
+		})
+	).isRequired // Make threads prop required
+};
 
 export default ThreadList;

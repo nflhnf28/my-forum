@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import ThreadList from '../components/ThreadList';
 import { useDispatch, useSelector } from 'react-redux';
-// import { asyncReceiveThreads } from '../states/threads/action';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Link } from 'react-router-dom';
 import { asyncGetUsersAndThreads } from '../states/shared/action';
@@ -20,7 +19,7 @@ function HomePage() {
 
 	const threadList = threads.map((thread) => ({
 		...thread,
-		user: users.find((user) => user.id === thread.ownerId),
+		user: users.find((user) => user.id === thread?.ownerId),
 		authUser: authUser?.id,
 	}));
 
