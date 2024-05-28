@@ -27,12 +27,14 @@ function addThreadActionCreator({ thread }) {
 function asyncReceiveThreads() {
   return async (dispatch) => {
     dispatch(showLoading());
+
     try {
       const threads = await api.getAllThreads();
       dispatch(receiveThreadsActionCreator(threads));
     } catch (error) {
       alert(error.message);
     }
+
     dispatch(hideLoading());
   };
 }
@@ -42,12 +44,14 @@ function asyncAddThread({ content }) {
 
   return async (dispatch) => {
     dispatch(showLoading());
+
     try {
       const addedThread = await api.createThread({ title, body, category });
       dispatch(addThreadActionCreator(addedThread));
     } catch (error) {
       alert(error.message);
     }
+
     dispatch(hideLoading());
   };
 }

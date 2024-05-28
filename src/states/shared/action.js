@@ -5,8 +5,9 @@ import { receiveUsersActionCreator } from '../users/action';
 
 function asyncGetUsersAndThreads() {
   return async (dispatch) => {
+    dispatch(showLoading());
+
     try {
-      dispatch(showLoading());
       const threads = await api.getAllThreads();
       const users = await api.getAllUsers();
 
@@ -15,6 +16,7 @@ function asyncGetUsersAndThreads() {
     } catch (error) {
       alert(error.message);
     }
+
     dispatch(hideLoading());
   };
 }

@@ -8,14 +8,6 @@ function threadDetailReducer(threadDetail = null, action = {}) {
 		case ActionType.CLEAR_THREAD_DETAIL:
 			return null;
 
-		// case ActionType.TOGGLE_LIKE_THREAD_DETAIL:
-		//   return {
-		//     ...threadDetail,
-		//     likes: threadDetail.likes.includes(action.payload.userId)
-		//       ? threadDetail.likes.filter((id) => id !== action.payload.userId)
-		//       : threadDetail.likes.concat(action.payload.userId),
-		//   };
-
 		default:
 			return threadDetail;
 	}

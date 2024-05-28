@@ -19,7 +19,6 @@ function asyncAddComment({ content, threadId }) {
     dispatch(showLoading());
     try {
       await api.createComment({ content, threadId });
-      // dispatch(addCommentActionCreator());
     } catch (error) {
       alert(error.message);
     }

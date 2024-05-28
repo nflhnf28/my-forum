@@ -5,7 +5,9 @@ import { AiOutlineComment } from "react-icons/ai";
 import { postedAt } from '../utils';
 import PropTypes from 'prop-types';
 
-const ThreadItem = ({ id, title, body, category, upVotesBy = [], downVotesBy = [], totalComments = 0, createdAt, user }) => {
+const ThreadItem = (props) => {
+	const { id, title, body, category, upVotesBy = [], downVotesBy = [], totalComments = 0, createdAt, user } = props;
+	console.log({ id });
 	return (
 		<div className='thread-item'>
 			<div className='thread-item__header'>
