@@ -9,7 +9,7 @@ const ThreadItem = ({ id, title, body, category, upVotesBy = [], downVotesBy = [
 	return (
 		<div className='thread-item'>
 			<div className='thread-item__header'>
-				<span className="thread-item__category">{category}</span>
+				<span className="thread-item__category">#{category}</span>
 				<h3 className='thread-item__title'>
 					<Link to={`/threads/${id}`}>{title}</Link>
 				</h3>
@@ -23,17 +23,22 @@ const ThreadItem = ({ id, title, body, category, upVotesBy = [], downVotesBy = [
 			</div>
 
 			<div className="thread-item__footer">
-				<button className="thread-upvote__button">
-					<AiOutlineLike />
-					<span className="thread-upvote__count">{upVotesBy?.length}</span>
-				</button>
-				<button className="thread-downvote__button">
-					<AiOutlineDislike />
-					<span className="thread-downvote__count">{downVotesBy?.length}</span>
-				</button>
-				<span className="thread-item__total-comments"><AiOutlineComment />{totalComments}</span>
-				<p>{postedAt(createdAt)}</p>
-				<p className="thread-item__owner">Dibuat oleh <strong>{user?.name}</strong></p>
+				<div className='button-actions'>
+					<button className="thread-upvote__button">
+						<AiOutlineLike />
+						<span className="thread-upvote__count">{upVotesBy?.length}</span>
+					</button>
+					<button className="thread-downvote__button">
+						<AiOutlineDislike />
+						<span className="thread-downvote__count">{downVotesBy?.length}</span>
+					</button>
+					<button className="thread-item__total-comments">
+						<AiOutlineComment />
+						<span className="thread-comment__count">{totalComments}</span>
+					</button>
+					<p>{postedAt(createdAt)},</p>
+					<p className="thread-item__owner">Posted by: <strong>{user?.name}</strong></p>
+				</div>
 			</div>
 
 		</div>

@@ -10,7 +10,7 @@ import { asyncAddComment } from '../states/comment/action';
 function DetailPage() {
 	const { id } = useParams();
 	const dispatch = useDispatch(); // @TODO: get dispatch function from store
-	// const { threadDetail, authUser } = useSelector((states) => states); // @TODO: get talkDetail and authUser state from store
+
 	const { threadDetail, authUser } = useSelector((state) => ({
 		threadDetail: state.threadDetail,
 		authUser: state.authUser
@@ -41,6 +41,7 @@ function DetailPage() {
 			/>
 			<div className='thread-comment'>
 				<CommentInput addComment={onAddComment} />
+				<h2 className='thread-comment__title'>Comments ({threadDetail.comments.length})</h2>
 				{
 					threadDetail.comments.map((comment, index) => (
 						<CommentItem key={index} comment={comment} />

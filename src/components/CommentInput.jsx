@@ -7,13 +7,15 @@ function CommentInput({ addComment }) {
   return (
     <div className="thread-comment__input">
       <h3>Comment here:</h3>
-      <form className="comment-input">
-        <input className="comment-input__field"
-          type="text"
-          value={content}
-          onChange={(e) => setContent(e.target.value)} />
-        <button type="submit" onClick={() => addComment({ content })}>Kirim</button>
-      </form>
+      <div className="form-container">
+        <form className="comment-input">
+          <input className="comment-input__field"
+            type="text"
+            value={content}
+            onChange={(e) => setContent(e.target.value)} />
+          <button type="submit" onClick={() => addComment({ content })}>Kirim</button>
+        </form>
+      </div>
     </div>
   )
 }

@@ -18,7 +18,6 @@ function HomePage() {
 	}, [dispatch]);
 
 	const threadList = threads.map((thread) => {
-		console.log(thread);
 		return {
 			...thread,
 			user: users.find((user) => user.id === thread?.ownerId),
