@@ -54,7 +54,9 @@ ThreadItem.propTypes = {
 	downVotesBy: PropTypes.array,
 	totalComments: PropTypes.number,
 	createdAt: PropTypes.string.isRequired,
-	user: PropTypes.object,
+	user: PropTypes.shape({
+		name: PropTypes.string,
+	}),
 };
 
 export default ThreadItem;

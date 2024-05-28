@@ -17,16 +17,21 @@ function HomePage() {
 		dispatch(asyncGetUsersAndThreads());
 	}, [dispatch]);
 
-	const threadList = threads.map((thread) => ({
-		...thread,
-		user: users.find((user) => user.id === thread?.ownerId),
-		authUser: authUser?.id,
-	}));
+	const threadList = threads.map((thread) => {
+		console.log(thread);
+		return {
+			...thread,
+			user: users.find((user) => user.id === thread?.ownerId),
+			authUser: authUser?.id,
+			createdAt: thread?.createdAt
+		};
+	});
+
 
 	return (
 		<section className='home-page'>
 			<ThreadList threads={threadList} />
-			<Link className="home-page__add-button" to="/new-thread"><AiOutlinePlusCircle /></Link>
+			<Link className="add-thread__button" to="/new-thread"><AiOutlinePlusCircle /></Link>
 		</section>
 	);
 }

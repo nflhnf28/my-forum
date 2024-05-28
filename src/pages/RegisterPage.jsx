@@ -15,14 +15,11 @@ function RegisterPage() {
 
 	return (
 		<section className='register-page'>
-			<header className='register-page__hero'>
-				<h1>Register Page</h1>
-			</header>
 			<article className='register-page__main'>
-				<h2>Create your account</h2>
+				<h2 className='login-page__title'>Create your account</h2>
 				<RegisterInput register={onRegister} />
 
-				<p>
+				<p className='login-page__switch'>
 					Already have an account? <Link to='/'>Login</Link>
 				</p>
 			</article>

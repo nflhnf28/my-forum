@@ -14,6 +14,7 @@ function LeaderboardList() {
 
   return (
     <div className="leaderboards-list">
+      <h2>Active Users Leaderboard</h2>
       <div className="leaderboards-list__header">
         <p className="leaderboards-list__user-label">Users</p>
         <p className="leaderboards-list__score-label">Score</p>

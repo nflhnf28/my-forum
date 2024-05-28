@@ -13,17 +13,14 @@ function LoginPage() {
 
 	return (
 		<section className='login-page'>
-			<header className='login-page__hero'>
-				<h1></h1>
-			</header>
 			<article className='login-page__main'>
-				<h2>
+				<h2 className='login-page__title'>
 					See <strong>The World</strong>, <br />
 					Through Open Space.
 				</h2>
 
 				<LoginInput login={onLogin} />
-				<p>
+				<p className='login-page__switch'>
 					Don&apos;t have an account? <Link to='/register'>Register</Link>
 				</p>
 			</article>

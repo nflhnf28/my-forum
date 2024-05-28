@@ -16,10 +16,6 @@ function App() {
 	const authUser = useSelector((state) => state.authUser);
 	const isPreload = useSelector((state) => state.isPreload);
 
-	// const { authUser = null, isPreload = false } = useSelector(
-	// (states) => states
-	// ); // @TODO: get authUser and isPreLoad state from store
-
 	const navigate = useNavigate();
 
 	const dispatch = useDispatch(); // @TODO: get dispatch function from store
