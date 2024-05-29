@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
-import ThreadList from '../components/ThreadList';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { Link } from 'react-router-dom';
+import ThreadList from '../components/ThreadList';
 import { asyncGetUsersAndThreads } from '../states/shared/action';
 
 function HomePage() {
@@ -17,10 +17,11 @@ function HomePage() {
 		dispatch(asyncGetUsersAndThreads());
 	}, [dispatch]);
 
-	const threadList = threads.map((thread) => {
+	const threadList = threads?.map((thread) => {
 		return {
 			...thread,
-			user: users.find((user) => user.id === thread?.ownerId),
+			id: thread?.id,
+			user: users.find((user) => user.id === thread?.ownerId) || { name: 'Unknown User' },
 			authUser: authUser?.id,
 			createdAt: thread?.createdAt
 		};
