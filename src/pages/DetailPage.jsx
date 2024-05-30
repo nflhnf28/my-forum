@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import ThreadDetail from '../components/ThreadDetail';
@@ -9,24 +9,29 @@ import { asyncAddComment } from '../states/comment/action';
 
 function DetailPage() {
 	const { id } = useParams();
-	const dispatch = useDispatch(); // @TODO: get dispatch function from store
+	const dispatch = useDispatch();
 
 	const { threadDetail, authUser } = useSelector((state) => ({
 		threadDetail: state.threadDetail,
 		authUser: state.authUser
 	}));
 
+	const [comments, setComments] = useState([]);
+
 	useEffect(() => {
-		// @TODO: dispatch async action to get thread detail by id
 		dispatch(asyncReceiveThreadDetail(id));
 	}, [id, dispatch]);
 
-	// @TODO: add comment useEffect
+	useEffect(() => {
+		if (threadDetail) {
+			setComments(threadDetail.comments);
+		}
+	}, [threadDetail]);
 
-	const onAddComment = ({ content }) => {
-		// @TODO: dispatch async action to add talk
-		console.log({ content, threadId: id });
-		dispatch(asyncAddComment({ content, threadId: id }));
+	const onAddComment = async ({ content }) => {
+		const newComment = { content, owner: authUser, threadId: id };
+		await dispatch(asyncAddComment(newComment));
+		setComments([newComment, ...comments]);
 	};
 
 	if (!threadDetail) {
@@ -35,18 +40,13 @@ function DetailPage() {
 
 	return (
 		<section className='detail-page'>
-			<ThreadDetail
-				authUser={authUser.id}
-				{...threadDetail}
-			/>
+			<ThreadDetail authUser={authUser.id} {...threadDetail} />
 			<div className='thread-comment'>
 				<CommentInput addComment={onAddComment} />
-				<h2 className='thread-comment__title'>Comments ({threadDetail.comments.length})</h2>
-				{
-					threadDetail.comments.map((comment, index) => (
-						<CommentItem key={index} comment={comment} />
-					))
-				}
+				<h2 className='thread-comment__title'>Comments ({comments.length})</h2>
+				{comments.map((comment, index) => (
+					<CommentItem key={index} comment={comment} />
+				))}
 			</div>
 		</section>
 	);

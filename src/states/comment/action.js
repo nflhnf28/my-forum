@@ -14,13 +14,15 @@ function addCommentActionCreator(comment) {
   }
 }
 
-function asyncAddComment({ content, threadId }) {
+function asyncAddComment({ content, threadId, owner }) {
   return async (dispatch) => {
     dispatch(showLoading());
     try {
-      await api.createComment({ content, threadId });
+      const addedComment = await api.createComment({ content, threadId, owner });
+      dispatch(addCommentActionCreator(addedComment));
     } catch (error) {
-      alert(error.message);
+      console.error('Error adding comment:', error);
+      alert('An error occurred while adding the comment. Please try again later.');
     }
 
     dispatch(hideLoading());

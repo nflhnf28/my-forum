@@ -25,7 +25,9 @@ function ThreadDetail({ title, body, createdAt, category, upVotesBy, downVotesBy
             <AiOutlineDislike />
             <span className="thread-downvote__count">{downVotesBy?.length}</span>
           </button>
-          <p className="thread-item__owner">Posted by <strong>{owner?.name},</strong></p>
+          <img src={owner.avatar} alt={owner.name} className='user-photo' />
+          <p className="thread-item__owner">
+            <strong>{owner?.name},</strong></p>
           <p className="thread-detail__created-at">{postedAt(createdAt)}</p>
         </div>
       </footer>
@@ -41,6 +43,7 @@ ThreadDetail.propTypes = {
   upVotesBy: PropTypes.array,
   downVotesBy: PropTypes.array,
   owner: PropTypes.shape({
+    avatar: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired
   }),
 };
