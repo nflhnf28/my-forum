@@ -1,59 +1,59 @@
-import { hideLoading, showLoading } from "react-redux-loading-bar";
-import api from "../../utils/api";
+import { hideLoading, showLoading } from 'react-redux-loading-bar'
+import api from '../../utils/api'
 
 const ActionType = {
   RECEIVE_THREADS: 'RECEIVE_THREADS',
-  ADD_THREAD: 'ADD_THREAD',
-};
+  ADD_THREAD: 'ADD_THREAD'
+}
 
-function receiveThreadsActionCreator(threads) {
+function receiveThreadsActionCreator (threads) {
   return {
     type: ActionType.RECEIVE_THREADS,
     payload: {
-      threads,
-    },
-  };
+      threads
+    }
+  }
 }
 
-function addThreadActionCreator({ thread }) {
+function addThreadActionCreator ({ thread }) {
   return {
     type: ActionType.ADD_THREAD,
     payload: {
-      thread,
-    },
-  };
+      thread
+    }
+  }
 }
 
-function asyncReceiveThreads() {
+function asyncReceiveThreads () {
   return async (dispatch) => {
-    dispatch(showLoading());
+    dispatch(showLoading())
 
     try {
-      const threads = await api.getAllThreads();
-      dispatch(receiveThreadsActionCreator(threads));
+      const threads = await api.getAllThreads()
+      dispatch(receiveThreadsActionCreator(threads))
     } catch (error) {
-      alert(error.message);
+      alert(error.message)
     }
 
-    dispatch(hideLoading());
-  };
+    dispatch(hideLoading())
+  }
 }
 
-function asyncAddThread({ content }) {
-  const { title, body, category } = content;
+function asyncAddThread ({ content }) {
+  const { title, body, category } = content
 
   return async (dispatch) => {
-    dispatch(showLoading());
+    dispatch(showLoading())
 
     try {
-      const addedThread = await api.createThread({ title, body, category });
-      dispatch(addThreadActionCreator({ thread: addedThread }));
+      const addedThread = await api.createThread({ title, body, category })
+      dispatch(addThreadActionCreator({ thread: addedThread }))
     } catch (error) {
-      alert(error.message);
+      alert(error.message)
     }
 
-    dispatch(hideLoading());
-  };
+    dispatch(hideLoading())
+  }
 }
 
 export {
@@ -61,5 +61,5 @@ export {
   receiveThreadsActionCreator,
   addThreadActionCreator,
   asyncReceiveThreads,
-  asyncAddThread,
+  asyncAddThread
 }

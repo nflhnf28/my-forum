@@ -1,24 +1,24 @@
-import api from '../../utils/api';
-import { hideLoading, showLoading } from 'react-redux-loading-bar';
-import { receiveThreadsActionCreator } from '../threads/action';
-import { receiveUsersActionCreator } from '../users/action';
+import api from '../../utils/api'
+import { hideLoading, showLoading } from 'react-redux-loading-bar'
+import { receiveThreadsActionCreator } from '../threads/action'
+import { receiveUsersActionCreator } from '../users/action'
 
-function asyncGetUsersAndThreads() {
+function asyncGetUsersAndThreads () {
   return async (dispatch) => {
-    dispatch(showLoading());
+    dispatch(showLoading())
 
     try {
-      const threads = await api.getAllThreads();
-      const users = await api.getAllUsers();
+      const threads = await api.getAllThreads()
+      const users = await api.getAllUsers()
 
-      dispatch(receiveThreadsActionCreator(threads));
-      dispatch(receiveUsersActionCreator(users));
+      dispatch(receiveThreadsActionCreator(threads))
+      dispatch(receiveUsersActionCreator(users))
     } catch (error) {
-      alert(error.message);
+      alert(error.message)
     }
 
-    dispatch(hideLoading());
-  };
+    dispatch(hideLoading())
+  }
 }
 
-export { asyncGetUsersAndThreads };
+export { asyncGetUsersAndThreads }

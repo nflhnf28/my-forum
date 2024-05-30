@@ -1,36 +1,36 @@
-import api from '../../utils/api';
-import { hideLoading, showLoading } from 'react-redux-loading-bar';
+import api from '../../utils/api'
+import { hideLoading, showLoading } from 'react-redux-loading-bar'
 
 const ActionType = {
-  ADD_COMMENT: 'ADD_COMMENT',
-};
+  ADD_COMMENT: 'ADD_COMMENT'
+}
 
-function addCommentActionCreator(comment) {
+function addCommentActionCreator (comment) {
   return {
     type: ActionType.ADD_COMMENT,
     payload: {
-      comment,
-    },
+      comment
+    }
   }
 }
 
-function asyncAddComment({ content, threadId, owner }) {
+function asyncAddComment ({ content, threadId, owner }) {
   return async (dispatch) => {
-    dispatch(showLoading());
+    dispatch(showLoading())
     try {
-      const addedComment = await api.createComment({ content, threadId, owner });
-      dispatch(addCommentActionCreator(addedComment));
+      const addedComment = await api.createComment({ content, threadId, owner })
+      dispatch(addCommentActionCreator(addedComment))
     } catch (error) {
-      console.error('Error adding comment:', error);
-      alert('An error occurred while adding the comment. Please try again later.');
+      console.error('Error adding comment:', error)
+      alert('An error occurred while adding the comment. Please try again later.')
     }
 
-    dispatch(hideLoading());
-  };
+    dispatch(hideLoading())
+  }
 }
 
 export {
   ActionType,
   addCommentActionCreator,
-  asyncAddComment,
+  asyncAddComment
 }
