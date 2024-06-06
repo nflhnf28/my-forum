@@ -5,7 +5,7 @@ function Navigation({ signOut }) {
 	return (
 		<div className='navigation'>
 			<nav>
-				<Link to='/'>Forum App</Link>
+				<Link to='/'>Forum Apps</Link>
 				<Link to='/leaderboards'>Leaderboards</Link>
 			</nav>
 			<button

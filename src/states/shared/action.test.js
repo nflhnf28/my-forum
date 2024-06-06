@@ -88,7 +88,7 @@ describe('asyncGetUsersAndThreads thunk', () => {
       window.alert = vi.fn()
 
       // action
-      await asyncGetUsersAndThread()(dispatch)
+      await asyncGetUsersAndThreads()(dispatch)
 
       // assert
       expect(dispatch).toHaveBeenCalledWith(showLoading())
