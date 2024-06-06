@@ -43,8 +43,8 @@ h3 {
 	width: 100%;
 	background-color: #1a1a1a;
 	color: white;
-	height: 100%;
-	min-height: fit-content;
+	height: 100vh;
+	min-height: 100vh;
 }
 
 .detail-page {
@@ -159,7 +159,7 @@ input {
 .thread-overview {
 	padding: 10px;
 	max-width: 900px;
-	/* height: 100vh; */
+	border-radius: 5px;
 	margin: 0 auto;
 	background-color: var(--forum-background);
 	text-align: left !important;
